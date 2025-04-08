@@ -15,6 +15,8 @@ public class LibyraFram extends javax.swing.JFrame {
     /**
      * Creates new form LibyraFram
      */
+    
+    
     public LibyraFram() {
         initComponents();
     }
@@ -30,7 +32,7 @@ public class LibyraFram extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Books = new javax.swing.JList<>();
+        ListBooks = new javax.swing.JList<>();
         remove = new javax.swing.JButton();
         add = new javax.swing.JButton();
         search = new javax.swing.JButton();
@@ -38,20 +40,27 @@ public class LibyraFram extends javax.swing.JFrame {
         campoAuthor = new javax.swing.JTextField();
         campoPrice = new javax.swing.JTextField();
         campoYear = new javax.swing.JTextField();
+        campoUpdate = new javax.swing.JButton();
+        campoId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 153));
 
-        Books.setModel(new javax.swing.AbstractListModel<String>() {
+        ListBooks.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(Books);
+        jScrollPane1.setViewportView(ListBooks);
 
         remove.setBackground(new java.awt.Color(204, 0, 0));
         remove.setText("Remove");
+        remove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeActionPerformed(evt);
+            }
+        });
 
         add.setBackground(new java.awt.Color(0, 255, 0));
         add.setText("Add");
@@ -65,6 +74,11 @@ public class LibyraFram extends javax.swing.JFrame {
         search.setText("Search");
 
         campoTitle.setText("TItle");
+        campoTitle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoTitleActionPerformed(evt);
+            }
+        });
 
         campoAuthor.setText("Author");
         campoAuthor.addActionListener(new java.awt.event.ActionListener() {
@@ -82,15 +96,29 @@ public class LibyraFram extends javax.swing.JFrame {
             }
         });
 
+        campoUpdate.setBackground(new java.awt.Color(204, 255, 102));
+        campoUpdate.setText("Update");
+        campoUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoUpdateActionPerformed(evt);
+            }
+        });
+
+        campoId.setText("ID");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(remove)
+                .addGap(88, 88, 88)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(campoUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(remove))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
@@ -100,28 +128,32 @@ public class LibyraFram extends javax.swing.JFrame {
                         .addComponent(campoPrice, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(campoYear, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jScrollPane1)))
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(campoTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(campoId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
                 .addComponent(campoAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(campoYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(search)
-                    .addComponent(add))
+                    .addComponent(add)
+                    .addComponent(search))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(remove)
-                .addGap(61, 61, 61))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(remove)
+                    .addComponent(campoUpdate))
+                .addGap(49, 49, 49))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -156,6 +188,28 @@ public class LibyraFram extends javax.swing.JFrame {
         BookController.addBook(title, author, price, year);
         
     }//GEN-LAST:event_addActionPerformed
+
+    private void campoUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoUpdateActionPerformed
+               //Pegando os dados dos campos
+        String title = campoTitle.getText();
+        String author = campoAuthor.getText();
+        String price = campoPrice.getText();
+        String year = campoYear.getText();
+        String id = campoId.getText();
+        
+        BookController.updateBook(id, title, author, price, year);
+    }//GEN-LAST:event_campoUpdateActionPerformed
+
+    private void campoTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTitleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoTitleActionPerformed
+
+    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
+
+        String id = campoId.getText();
+        
+        BookController.removeBook(id);
+    }//GEN-LAST:event_removeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,11 +247,13 @@ public class LibyraFram extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList<String> Books;
+    private javax.swing.JList<String> ListBooks;
     private javax.swing.JButton add;
     private javax.swing.JTextField campoAuthor;
+    private javax.swing.JTextField campoId;
     private javax.swing.JTextField campoPrice;
     private javax.swing.JTextField campoTitle;
+    private javax.swing.JButton campoUpdate;
     private javax.swing.JTextField campoYear;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

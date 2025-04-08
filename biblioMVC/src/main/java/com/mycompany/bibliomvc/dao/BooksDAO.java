@@ -39,7 +39,7 @@ public class BooksDAO {
         }
     }
 
-    public static void updateBook(int id, String newTitle, String newAuthor, Double newPrice, int newYear) {
+    public static void updateBook(Book myBook) {
         String sql = "UPDATE books "
                 + "SET title = ?, "
                 + "author = ?, "
@@ -51,11 +51,12 @@ public class BooksDAO {
         Connection conexao = connectSQLite.connect();
 
         try (PreparedStatement pstmt = conexao.prepareStatement(sql)) {
-            pstmt.setString(1, newTitle);
-            pstmt.setString(2, newAuthor);
-            pstmt.setDouble(3, newPrice);
-            pstmt.setInt(4, newYear);
-            pstmt.setInt(5, id);
+            pstmt.setString(1, myBook.getTitle());
+            pstmt.setString(2, myBook.getAuthor());
+            pstmt.setDouble(3, myBook.getPrice());
+            pstmt.setInt(4, myBook.getYear());
+            pstmt.setInt(5, myBook.getId());
+
 
             int rowsUpdated = pstmt.executeUpdate();
             if (rowsUpdated > 0) {
