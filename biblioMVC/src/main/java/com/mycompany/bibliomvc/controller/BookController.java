@@ -40,7 +40,13 @@ public class BookController {
         
     }
     
-    public static void removeBook(){
+    public static void removeBook(String idStr){
+        
+        //Conversão de texto para tipos corretos
+        int id = Integer.parseInt(idStr);
+        
+        BooksDAO.deleteBook(id);
+        
        System.out.println("hello wolrd");
     }
 }
