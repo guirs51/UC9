@@ -1,0 +1,15 @@
+com\mycompany\bibliomvc\dao\BooksDAO.class
+com\mycompany\bibliomvc\view\LibyraFram$8.class
+com\mycompany\bibliomvc\controller\BookController.class
+com\mycompany\bibliomvc\view\LibyraFram$2.class
+com\mycompany\bibliomvc\database\ConnectSQLite.class
+com\mycompany\bibliomvc\view\LibyraFram$6.class
+com\mycompany\bibliomvc\view\LibyraFram$1.class
+com\mycompany\bibliomvc\model\Book.class
+com\mycompany\bibliomvc\view\LibyraFram$5.class
+com\mycompany\bibliomvc\view\LibyraFram$4.class
+com\mycompany\bibliomvc\view\LibyraFram$3.class
+com\mycompany\bibliomvc\view\LibyraFram$7.class
+com\mycompany\bibliomvc\BiblioMVC.class
+com\mycompany\bibliomvc\database\CreateTables.class
+com\mycompany\bibliomvc\view\LibyraFram.class
